@@ -38,4 +38,12 @@ public class Project {
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Like> likes;
+
+    public List<ProjectTechnology> getTechnologies() {
+        return technologies;
+    }
+
+    public void setTechnologies(List<ProjectTechnology> technologies) {
+        this.technologies = technologies;
+    }
 }

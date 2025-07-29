@@ -1,11 +1,14 @@
 package com.example.sagaribackend.dtos;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 public class ProjectResponseDTO {
     private Long id;
     private String name;
@@ -18,5 +21,14 @@ public class ProjectResponseDTO {
     private List<String> imageNames;
     private int likeCount;
     private List<CommentResponseDTO> comments;
+
+
+    public List<String> getTechnologies() {
+        return technologies;
+    }
+
+    public void setTechnologies(List<String> technologies) {
+        this.technologies = technologies;
+    }
 }
 
