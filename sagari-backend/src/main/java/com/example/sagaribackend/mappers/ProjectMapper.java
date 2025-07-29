@@ -2,10 +2,9 @@ package com.example.sagaribackend.mappers;
 
 import com.example.sagaribackend.dtos.ProjectRequestDTO;
 import com.example.sagaribackend.dtos.ProjectResponseDTO;
-import com.example.sagaribackend.models.Comment;
 import com.example.sagaribackend.models.Project;
 import com.example.sagaribackend.models.ProjectImage;
-import com.example.sagaribackend.models.ProjectTechnology;
+import com.example.sagaribackend.models.Technology;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -24,10 +23,10 @@ public interface ProjectMapper {
     @Mapping(target = "images", ignore = true)
     Project toEntity(ProjectRequestDTO dto);
 
-    default List<String> map(List<ProjectTechnology> technologies) {
+    default List<String> map(List<Technology> technologies) {
         if (technologies == null) return java.util.Collections.emptyList();
         return technologies.stream()
-                .map(ProjectTechnology::getTechnologyName)
+                .map(Technology::getTechnologyName)
                 .toList();
     }
 

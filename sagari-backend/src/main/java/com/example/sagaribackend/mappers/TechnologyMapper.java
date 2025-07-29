@@ -1,11 +1,11 @@
 package com.example.sagaribackend.mappers;
 
 import com.example.sagaribackend.dtos.TechnologyDTO;
-import com.example.sagaribackend.models.ProjectTechnology;
+import com.example.sagaribackend.models.Technology;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface TechnologyMapper {
-    TechnologyDTO toDto(ProjectTechnology tech);
-    ProjectTechnology toEntity(TechnologyDTO dto);
+    TechnologyDTO toDto(Technology tech);
+    Technology toEntity(TechnologyDTO dto);
 }

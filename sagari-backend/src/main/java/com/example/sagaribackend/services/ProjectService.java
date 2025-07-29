@@ -5,8 +5,9 @@ import com.example.sagaribackend.dtos.ProjectResponseDTO;
 import com.example.sagaribackend.mappers.ProjectMapper;
 import com.example.sagaribackend.models.Project;
 import com.example.sagaribackend.models.ProjectImage;
-import com.example.sagaribackend.models.ProjectTechnology;
+import com.example.sagaribackend.models.Technology;
 import com.example.sagaribackend.repo.ProjectRepository;
+import com.example.sagaribackend.repo.ProjectTechnologyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ public class ProjectService {
 
     private final ProjectRepository projectRepository;
     private final ProjectMapper projectMapper;
+
+    private final ProjectTechnologyRepository projectTechnologyRepository;
 
     public List<ProjectResponseDTO> getAllProjects() {
         return projectRepository.findAll().stream()
@@ -39,10 +42,17 @@ public class ProjectService {
         project.setWebUrl(dto.getWebUrl());
 
         // Technologies
-        List<ProjectTechnology> techs = dto.getTechnologies().stream()
-                .map(name -> new ProjectTechnology(null, name, project))
+        List<Technology> technologies = dto.getTechnologies().stream()
+                .map(techName -> projectTechnologyRepository.findByTechnologyName(techName)
+                        .orElseGet(() -> {
+                            Technology newTech = new Technology();
+                            newTech.setTechnologyName(techName);
+
+
+                            return projectTechnologyRepository.save(newTech);
+                        }))
                 .toList();
-        project.setTechnologies(techs);
+        project.setTechnologies(technologies);
 
         // Images
         List<ProjectImage> images = dto.getImageNames().stream()

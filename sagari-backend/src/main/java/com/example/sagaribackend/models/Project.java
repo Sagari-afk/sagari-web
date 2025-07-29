@@ -30,20 +30,17 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectImage> images;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private List<ProjectTechnology> technologies;
+    @ManyToMany
+    @JoinTable(
+            name = "project_technology",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id")
+    )
+    private List<Technology> technologies;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Like> likes;
-
-    public List<ProjectTechnology> getTechnologies() {
-        return technologies;
-    }
-
-    public void setTechnologies(List<ProjectTechnology> technologies) {
-        this.technologies = technologies;
-    }
 }

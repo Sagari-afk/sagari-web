@@ -25,7 +25,7 @@ public class ProjectController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody ProjectRequestDTO dto, @AuthenticationPrincipal AppUser user) {
+    public ResponseEntity<?> create(@RequestBody ProjectRequestDTO dto) {
         projectService.createProject(dto);
         return ResponseEntity.ok().build();
     }
