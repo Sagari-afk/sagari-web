@@ -1,8 +1,8 @@
 package com.example.sagaribackend.services;
 
-import com.example.sagaribackend.dtos.LoginRequest;
-import com.example.sagaribackend.dtos.LoginResponse;
-import com.example.sagaribackend.dtos.RegisterRequest;
+import com.example.sagaribackend.dtos.LoginRequestDTO;
+import com.example.sagaribackend.dtos.LoginResponseDTO;
+import com.example.sagaribackend.dtos.RegisterRequestDTO;
 import com.example.sagaribackend.dtos.UserResponseDTO;
 import com.example.sagaribackend.mappers.UserMapper;
 import com.example.sagaribackend.models.AppUser;
@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
                 user.getEmail(), user.getPassword(), authorities);
     }
 
-    public void register(RegisterRequest request) {
+    public void register(RegisterRequestDTO request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new RuntimeException("User already exists");
         }
@@ -70,7 +70,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public LoginResponse login(LoginRequest request) {
+    public LoginResponseDTO login(LoginRequestDTO request) {
         AppUser user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -80,6 +80,6 @@ public class UserService implements UserDetailsService {
 
         String token = jwtUtil.generateToken(user);
 
-        return new LoginResponse(user.getUsername(), user.getEmail(), token);
+        return new LoginResponseDTO(user.getUsername(), user.getEmail(), token);
     }
 }
