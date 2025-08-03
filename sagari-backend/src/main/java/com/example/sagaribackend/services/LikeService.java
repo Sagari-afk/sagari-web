@@ -21,7 +21,8 @@ public class LikeService {
     private final UserRepository userRepository;
 
     public void likeArt(Long userId, Long artId) {
-        if (likeRepository.existsByUserIdAndArtId(userId, artId)) return;
+        if (likeRepository.existsByUserIdAndArtId(userId, artId))
+            throw new RuntimeException("The user already liked this art");
 
         Art art = artRepository.findById(artId)
                 .orElseThrow(() -> new RuntimeException("Art not found"));
@@ -36,7 +37,8 @@ public class LikeService {
     }
 
     public void likeProject(Long userId, Long projectId) {
-        if (likeRepository.existsByUserIdAndProjectId(userId, projectId)) return;
+        if (likeRepository.existsByUserIdAndProjectId(userId, projectId))
+            throw new RuntimeException("The user already liked this project");
 
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
