@@ -1,16 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import React from "react";
+import Header from "@/components/header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const aspekta = localFont({
+    src: [
+        {
+            path: '../public/fonts/Aspekta-100.woff2',
+            weight: '100',
+            style: 'extralight',
+        },
+        {
+            path: '../public/fonts/Aspekta-250.woff2',
+            weight: '250',
+            style: 'thin',
+        },
+        {
+            path: '../public/fonts/Aspekta-400.woff2',
+            weight: '400',
+            style: 'normal',
+        },
+        {
+            path: '../public/fonts/Aspekta-700.woff2',
+            weight: '700',
+            style: 'bold',
+        },
+    ],
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,8 +42,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${aspekta.className} antialiased`}
       >
+        <Header/>
         {children}
       </body>
     </html>

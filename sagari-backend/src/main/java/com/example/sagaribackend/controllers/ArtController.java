@@ -4,8 +4,6 @@ import com.example.sagaribackend.dtos.ArtRequestDTO;
 import com.example.sagaribackend.dtos.ArtResponseDTO;
 import com.example.sagaribackend.dtos.CommentRequestDTO;
 import com.example.sagaribackend.dtos.LikeRequestDTO;
-import com.example.sagaribackend.mappers.ArtMapper;
-import com.example.sagaribackend.repo.ArtRepository;
 import com.example.sagaribackend.services.ArtService;
 import com.example.sagaribackend.services.CommentService;
 import com.example.sagaribackend.services.LikeService;
