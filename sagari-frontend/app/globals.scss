@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --dark: #393640;
+  --light: #A0A0A0;
+
+  --light-purple: #C484F6;
+  --semitransparent-purple: rgba(196, 132, 246, 0.21);
+  --purple: rgba(119, 81, 189, 1);
+  --dark-purple-gradient: linear-gradient(90deg,rgba(119, 81, 189, 1) 0%, rgba(196, 132, 246, 1) 100%);
+  --transparent-orange-gradient: linear-gradient(180deg,rgba(255, 255, 255, 0) 0%, rgba(174, 113, 58, 0.2) 100%);
+}
+
+@theme inline {
+  --color-dark: var(--dark);
+  --color-light: var(--light);
+  --color-light-purple: var(--light-purple);
+  --color-semitransparent-purple: var(--semitransparent-purple);
+  --color-dark-purpule-gradient: var(--dark-purple-gradient);
+  --color-dark-purple-gradient: var(--dark-purple-gradient);
+  --color-purple: var(--purple);
+}
+
+body {
+  font-family: Aspekta, serif;
+}
+
+.bg-dark-purple-gradient {
+  background: var(--dark-purple-gradient);
+}
+
+.bg-transparent-orange-gradient {
+  background: var(--transparent-orange-gradient);
+}
+
+.background-dark-pattern {
+  background-color: #34313B;
+  opacity: 1;
+  background-image:  linear-gradient(135deg, #322F39 25%, transparent 25%), linear-gradient(225deg, #322F39 25%, transparent 25%), linear-gradient(45deg, #322F39 25%, transparent 25%), linear-gradient(315deg, #322F39 25%, #34313B 25%);
+  background-position:  18px 0, 18px 0, 0 0, 0 0;
+  background-size: 36px 36px;
+  background-repeat: repeat;
+}

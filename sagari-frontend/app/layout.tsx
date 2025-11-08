@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "./globals.scss";
 import React from "react";
-import Header from "@/components/header";
+import Header from "@/components/Header/header";
 
 const aspekta = localFont({
     src: [
